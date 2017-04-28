@@ -1,0 +1,75 @@
+@black: #000000;
+@white: #ffffff;
+
+@gray-darker: #222;
+@gray-dark: #333;
+@gray: #666;
+@gray-light: #999;
+@gray-lighter: #ddd;
+
+@green: #49aa83;
+@turquoise: #399998;
+@orange: #eb6419;
+@red: #e61d39;
+
+@font-size-lg: 150%;
+@font-size-md: 100%;
+@font-size-sm: 75%;
+
+//1px边框
+.border-1px(@color:#dddddd,@pos:bottom,@add:after) {
+  position: relative;
+  &:@{add} {
+    height: 1px;
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    @{pos}: 0;
+    width: 100%;
+    background-color: @color;
+  }
+  @media only screen and (min-device-pixel-ratio: 1.5),(-webkit-min-device-pixel-ratio: 1.5) {
+    &::before, &::after {
+      transform: scaleY(0.7);
+    }
+  }
+  @media only screen and (min-device-pixel-ratio: 2),(-webkit-min-device-pixel-ratio: 2) {
+    &::before, &::after {
+      transform: scaleY(0.5);
+    }
+  }
+  @media only screen and (min-device-pixel-ratio: 3),(-webkit-min-device-pixel-ratio: 3) {
+    &::before, &::after {
+      transform: scaleY(0.333);
+    }
+  }
+}
+//隐藏边框
+.border-none{
+  &:after{
+    display: none;
+  }
+}
+
+//背景图片
+.bg-img(@url) {
+  background: url('./../img/icon/@{url}@2x.png') no-repeat;
+  background-size: 100% 100%;
+  @media only screen and (min-device-pixel-ratio: 3),(-webkit-min-device-pixel-ratio: 3) {
+    background-image: url('./../img/icon/@{url}@3x.png');
+  }
+}
+
+//清除浮动
+.clearfix {
+  display: inline-block;
+  &:after {
+    display: block;
+    content: ".";
+    height: 0;
+    line-height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
